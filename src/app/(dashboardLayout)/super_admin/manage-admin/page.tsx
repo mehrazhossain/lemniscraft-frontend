@@ -1,16 +1,11 @@
 "use client";
 import ActionBar from "@/components/ui/ActionBar";
 import ReusableTable from "@/components/ui/ReusableTable";
-import { useUsersQuery } from "@/redux/api/userApi";
-import { Button, Input } from "antd";
+import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
+import { Button, Input, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  DeleteFilled,
-  EditFilled,
-  EyeFilled,
-  ReloadOutlined,
-} from "@ant-design/icons";
+import { DeleteFilled, EditFilled, ReloadOutlined } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks";
 import dayjs from "dayjs";
 
@@ -39,6 +34,7 @@ const ManageAdminPage = () => {
   }
 
   const { data: responseData, isLoading } = useUsersQuery({ ...query });
+  const [deleteUser] = useDeleteUserMutation();
 
   const usersData = responseData?.users?.data;
 
@@ -66,9 +62,6 @@ const ManageAdminPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Button onClick={() => console.log()} type="primary">
-              <EyeFilled />
-            </Button>
             <Link href={`/super_admin/manage-admin/edit/${data?.id}`}>
               <Button
                 style={{ margin: "0px 5px" }}
@@ -78,7 +71,11 @@ const ManageAdminPage = () => {
                 <EditFilled />
               </Button>
             </Link>
-            <Button onClick={() => console.log()} type="primary" danger>
+            <Button
+              onClick={() => deleteHandler(data?.id)}
+              type="primary"
+              danger
+            >
               <DeleteFilled />
             </Button>
           </>
@@ -92,6 +89,17 @@ const ManageAdminPage = () => {
     setPage(page);
     setSize(pageSize);
   };
+
+  const deleteHandler = async (id: string) => {
+    message.loading("Deleting...");
+    try {
+      await deleteUser(id);
+      message.success("User Deleted Successfully!");
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
+
   const onTableChange = (pagination: any, filter: any, sorter: any) => {
     const { order, field } = sorter;
     // console.log(order, field);

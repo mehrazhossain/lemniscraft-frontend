@@ -25,8 +25,7 @@ const EditPage = ({ params }: IDProps) => {
     console.log({ body: values });
 
     try {
-      const result = await updateUser({ id, body: values });
-      console.log({ result });
+      await updateUser({ id, body: values });
       message.success("User Updated Successfully!");
     } catch (err: any) {
       console.error(err.message);
@@ -65,7 +64,7 @@ const EditPage = ({ params }: IDProps) => {
               marginBottom: "10px",
             }}
           >
-            Admin Information
+            Basic Information
           </p>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col

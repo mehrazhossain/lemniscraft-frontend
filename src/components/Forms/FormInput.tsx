@@ -13,6 +13,7 @@ interface IInput {
   validation?: object;
   label?: string;
   required?: boolean;
+  readOnly?: boolean;
 }
 
 const FormInput = ({

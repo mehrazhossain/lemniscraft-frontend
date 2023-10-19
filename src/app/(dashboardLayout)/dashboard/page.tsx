@@ -1,7 +1,7 @@
 const UserPage = () => {
   return (
-    <div>
-      <h2 className="text-3xl">this is user page</h2>
+    <div className="mt-10">
+      <h1 className="text-3xl">Welcome to Dashboar</h1>
     </div>
   );
 };

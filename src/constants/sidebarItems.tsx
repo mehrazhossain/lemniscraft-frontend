@@ -34,16 +34,7 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
-  const adminSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
-    ...commonAdminSidebarItems,
-    {
-      label: "Manage Services",
-      key: "manage-services",
-      icon: <TableOutlined />,
-      children: [],
-    },
-  ];
+  const adminSidebarItems: MenuProps["items"] = [...defaultSidebarItems];
 
   const superAdminSidebarItems: MenuProps["items"] = [
     ...adminSidebarItems,
