@@ -1,10 +1,7 @@
 "use client";
-
 import Form from "@/components/Forms/Form";
-
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
-import ReusableBreadcrumb from "@/components/ui/ReusableBreadcrumb";
 import { roleOptions } from "@/constants/global";
 import { useUserSignupMutation } from "@/redux/api/authApi";
 import { adminSchema } from "@/schemas/admin";
@@ -32,21 +29,7 @@ const CreateAdminPage = () => {
   };
 
   return (
-    <div>
-      <ReusableBreadcrumb
-        items={[
-          {
-            label: "super_admin",
-            link: "/super_admin",
-          },
-          {
-            label: "admin",
-            link: "/super_admin/admin",
-          },
-        ]}
-      />
-      <h1 className="text-2xl">Create Admin</h1>
-
+    <>
       <div>
         <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
           <div
@@ -221,7 +204,7 @@ const CreateAdminPage = () => {
           </Button>
         </Form>
       </div>
-    </div>
+    </>
   );
 };
 

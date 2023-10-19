@@ -66,17 +66,19 @@ const ManageAdminPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Button onClick={() => console.log(data)} type="primary">
+            <Button onClick={() => console.log()} type="primary">
               <EyeFilled />
             </Button>
-            <Button
-              style={{ margin: "0px 5px" }}
-              onClick={() => console.log(data)}
-              type="primary"
-            >
-              <EditFilled />
-            </Button>
-            <Button onClick={() => console.log(data)} type="primary" danger>
+            <Link href={`/super_admin/manage-admin/edit/${data?.id}`}>
+              <Button
+                style={{ margin: "0px 5px" }}
+                onClick={() => console.log()}
+                type="primary"
+              >
+                <EditFilled />
+              </Button>
+            </Link>
+            <Button onClick={() => console.log()} type="primary" danger>
               <DeleteFilled />
             </Button>
           </>
