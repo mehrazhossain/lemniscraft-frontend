@@ -12,6 +12,7 @@ import {
   ReloadOutlined,
 } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks";
+import dayjs from "dayjs";
 
 const ManageAdminPage = () => {
   const query: Record<string, any> = {};
@@ -55,6 +56,9 @@ const ManageAdminPage = () => {
     {
       title: "CreatedAt",
       dataIndex: "createdAt",
+      render: function (data: any) {
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+      },
       sorter: true,
     },
     {
