@@ -24,7 +24,6 @@ const CreateAdminPage = () => {
 
       if (res?.statusCode === 200) {
         router.push("/superAdmin/manage-admin");
-        message.success("User Created Successfully!");
         message.success("Admin created successfully!");
       }
     } catch (err: any) {
