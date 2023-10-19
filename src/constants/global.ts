@@ -12,3 +12,14 @@ export const roleOptions = [
     value: "super_admin",
   },
 ];
+
+export const serviceOptions = [
+  {
+    label: "Available",
+    value: "available",
+  },
+  {
+    label: "Upcomming",
+    value: "upcomming",
+  },
+];

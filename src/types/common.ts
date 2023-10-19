@@ -34,3 +34,14 @@ export interface IUser {
   updatedAt: string;
   data: string | any;
 }
+export interface IService {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+  availability: string;
+  createdAt: string;
+  updatedAt: string;
+  data: string | any;
+}

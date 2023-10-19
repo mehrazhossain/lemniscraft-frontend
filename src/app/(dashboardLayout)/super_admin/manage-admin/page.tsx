@@ -115,7 +115,7 @@ const ManageAdminPage = () => {
 
   return (
     <div>
-      <ActionBar title="All User List">
+      <ActionBar title="User Management">
         <Input
           style={{ width: "20%" }}
           onChange={(e) => {

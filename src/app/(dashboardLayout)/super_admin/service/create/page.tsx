@@ -2,26 +2,26 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
-import { roleOptions } from "@/constants/global";
-import { useUserSignupMutation } from "@/redux/api/authApi";
+import { roleOptions, serviceOptions } from "@/constants/global";
+import { useCreateServiceMutation } from "@/redux/api/serviceApi";
 import { adminSchema } from "@/schemas/admin";
+import { createServiceSchema } from "@/schemas/service";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
 
-const CreateAdminPage = () => {
-  const [userSignup] = useUserSignupMutation();
+const CreateServicePage = () => {
+  const [createService] = useCreateServiceMutation();
   const router = useRouter();
 
   const onSubmit = async (values: any) => {
     message.loading("Creating...");
     try {
-      const res = await userSignup({ ...values }).unwrap();
-
+      const res = await createService({ ...values }).unwrap();
       if (res?.statusCode === 200) {
-        router.push("/super_admin/manage-admin");
-        message.success("Admin created successfully!");
+        router.push("/super_admin/service");
+        message.success("Service created successfully!");
       }
     } catch (err: any) {
       console.error(err.message);
@@ -31,7 +31,10 @@ const CreateAdminPage = () => {
   return (
     <div className="ml-5 mt-5">
       <div>
-        <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(createServiceSchema)}
+        >
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -46,7 +49,7 @@ const CreateAdminPage = () => {
                 marginBottom: "10px",
               }}
             >
-              Admin Information
+              Service Information
             </p>
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col
@@ -58,9 +61,9 @@ const CreateAdminPage = () => {
               >
                 <FormInput
                   type="text"
-                  name="firstName"
+                  name="title"
                   size="large"
-                  label="First Name"
+                  label="Service Title"
                 />
               </Col>
               <Col
@@ -72,9 +75,9 @@ const CreateAdminPage = () => {
               >
                 <FormInput
                   type="text"
-                  name="lastName"
+                  name="description"
                   size="large"
-                  label="Last Name"
+                  label="Service Description"
                 />
               </Col>
               <Col
@@ -86,9 +89,9 @@ const CreateAdminPage = () => {
               >
                 <FormInput
                   type="text"
-                  name="email"
+                  name="image"
                   size="large"
-                  label="Email"
+                  label="Service Banner URL"
                 />
               </Col>
               <Col
@@ -99,10 +102,10 @@ const CreateAdminPage = () => {
                 }}
               >
                 <FormInput
-                  type="password"
-                  name="password"
+                  type="number"
+                  name="price"
                   size="large"
-                  label="Password"
+                  label="Service Price"
                 />
               </Col>
               <Col
@@ -114,80 +117,10 @@ const CreateAdminPage = () => {
               >
                 <FormSelectField
                   size="large"
-                  name="role"
-                  options={roleOptions}
-                  label="Role"
+                  name="availability"
+                  options={serviceOptions}
+                  label="Availability Status"
                   placeholder="Select"
-                />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
-                <FormInput
-                  type="text"
-                  name="profileImg"
-                  size="large"
-                  label="Profile URL"
-                />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              ></Col>
-            </Row>
-          </div>
-
-          {/* additional info */}
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              marginBottom: "10px",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "18px",
-                marginBottom: "10px",
-              }}
-            >
-              Contact Information
-            </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
-                <FormInput
-                  type="text"
-                  name="contactNo"
-                  size="large"
-                  label="Contact Number"
-                />
-              </Col>
-              <Col
-                className="gutter-row"
-                span={8}
-                style={{
-                  marginBottom: "10px",
-                }}
-              >
-                <FormInput
-                  type="text"
-                  name="address"
-                  size="large"
-                  label="Address"
                 />
               </Col>
               <Col
@@ -208,4 +141,4 @@ const CreateAdminPage = () => {
   );
 };
 
-export default CreateAdminPage;
+export default CreateServicePage;
