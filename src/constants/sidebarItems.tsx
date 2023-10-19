@@ -22,31 +22,37 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
-  const commonAdminSidebarItems: MenuProps["items"] = [
+  const adminSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
     {
-      label: "Manage Users",
+      label: "Service Management",
+      key: "/service-management",
       icon: <TableOutlined />,
-      key: "/manage-user",
       onClick: () =>
-        router.push(
-          `/${role === USER_ROLE.SUPER_ADMIN ? "superAdmin" : role}/manage-user`
-        ),
+        router.push(`/${role === USER_ROLE.ADMIN ? "admin" : role}/service`),
     },
   ];
 
-  const adminSidebarItems: MenuProps["items"] = [...defaultSidebarItems];
-
   const superAdminSidebarItems: MenuProps["items"] = [
-    ...adminSidebarItems,
+    ...defaultSidebarItems,
     {
-      label: "Manage Admin",
-      key: "/manage-admin",
+      label: "User Management",
+      key: "/user-management",
       icon: <TableOutlined />,
       onClick: () =>
         router.push(
           `/${
             role === USER_ROLE.SUPER_ADMIN ? "super_admin" : role
           }/manage-admin`
+        ),
+    },
+    {
+      label: "Service Management",
+      key: "/service-management",
+      icon: <TableOutlined />,
+      onClick: () =>
+        router.push(
+          `/${role === USER_ROLE.SUPER_ADMIN ? "super_admin" : role}/service`
         ),
     },
   ];
