@@ -4,6 +4,7 @@ import { getUserInfo } from "@/services/auth.service";
 
 const page = () => {
   const { role } = getUserInfo() as any;
+
   return (
     <div>
       <ReusableBreadcrumb

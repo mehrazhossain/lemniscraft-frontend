@@ -19,3 +19,18 @@ export type IGenericErrorMessage = {
   path: string | number;
   message: string;
 };
+
+export interface IUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  role: string;
+  contactNo: string;
+  address: string;
+  profileImg: string;
+  createdAt: string;
+  updatedAt: string;
+  data: string | any;
+}

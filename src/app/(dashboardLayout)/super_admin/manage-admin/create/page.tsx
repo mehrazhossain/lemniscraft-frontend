@@ -23,7 +23,7 @@ const CreateAdminPage = () => {
       const res = await userSignup({ ...values }).unwrap();
 
       if (res?.statusCode === 200) {
-        router.push("/superAdmin/manage-admin");
+        router.push("/super_admin/manage-admin");
         message.success("Admin created successfully!");
       }
     } catch (err: any) {

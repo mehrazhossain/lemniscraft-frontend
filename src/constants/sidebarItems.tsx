@@ -54,7 +54,7 @@ export const sidebarItems = (role: string) => {
       onClick: () =>
         router.push(
           `/${
-            role === USER_ROLE.SUPER_ADMIN ? "superAdmin" : role
+            role === USER_ROLE.SUPER_ADMIN ? "super_admin" : role
           }/manage-admin`
         ),
     },
