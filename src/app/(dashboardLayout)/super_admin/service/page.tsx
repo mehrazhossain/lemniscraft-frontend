@@ -1,14 +1,16 @@
 "use client";
 import ActionBar from "@/components/ui/ActionBar";
 import ReusableTable from "@/components/ui/ReusableTable";
-import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { Button, Input, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import { DeleteFilled, EditFilled, ReloadOutlined } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks";
 import dayjs from "dayjs";
-import { useServicesQuery } from "@/redux/api/serviceApi";
+import {
+  useDeleteServiceMutation,
+  useServicesQuery,
+} from "@/redux/api/serviceApi";
 
 const ManageServicePage = () => {
   const query: Record<string, any> = {};
@@ -38,7 +40,7 @@ const ManageServicePage = () => {
 
   const servicesData = responseData?.users?.data;
 
-  const [deleteUser] = useDeleteUserMutation();
+  const [deleteService] = useDeleteServiceMutation();
 
   const columns = [
     {
@@ -66,7 +68,7 @@ const ManageServicePage = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/super_admin/manage-admin/edit/${data?.id}`}>
+            <Link href={`/super_admin/service/edit/${data?.id}`}>
               <Button
                 style={{ margin: "0px 5px" }}
                 onClick={() => console.log()}
@@ -96,7 +98,7 @@ const ManageServicePage = () => {
   const deleteHandler = async (id: string) => {
     message.loading("Deleting...");
     try {
-      await deleteUser(id);
+      await deleteService(id);
       message.success("User Deleted Successfully!");
     } catch (err: any) {
       console.error(err.message);
