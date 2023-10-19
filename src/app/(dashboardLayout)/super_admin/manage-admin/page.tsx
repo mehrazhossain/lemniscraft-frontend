@@ -2,10 +2,16 @@
 import ActionBar from "@/components/ui/ActionBar";
 import ReusableTable from "@/components/ui/ReusableTable";
 import { useUsersQuery } from "@/redux/api/userApi";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-import { DeleteFilled, EditFilled, EyeFilled } from "@ant-design/icons";
+import {
+  DeleteFilled,
+  EditFilled,
+  EyeFilled,
+  ReloadOutlined,
+} from "@ant-design/icons";
+import { useDebounced } from "@/redux/hooks";
 
 const ManageAdminPage = () => {
   const query: Record<string, any> = {};
@@ -14,15 +20,26 @@ const ManageAdminPage = () => {
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+  // query["searchTerm"] = searchTerm;
+
+  const debouncedTerm = useDebounced({
+    searchQuery: searchTerm,
+    delay: 600,
+  });
+
+  if (!!debouncedTerm) {
+    query["searchTerm"] = debouncedTerm;
+  }
 
   const { data: responseData, isLoading } = useUsersQuery({ ...query });
 
-  const usersData = responseData?.users.data;
+  const usersData = responseData?.users?.data;
 
   const columns = [
     {
@@ -76,14 +93,41 @@ const ManageAdminPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
+  const resetFilters = () => {
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
+  };
+
   return (
     <div>
-      <ActionBar title="Admin List">
-        <Link href="manage-admin/create">
-          <Button style={{ color: "#000" }} type="primary">
-            Admin Create
-          </Button>
-        </Link>
+      <ActionBar title="All User List">
+        <Input
+          style={{ width: "20%" }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+          type="text"
+          size="large"
+          placeholder="Search"
+        />
+
+        <div>
+          <Link href="manage-admin/create">
+            <Button style={{ color: "#000" }} type="primary">
+              Create
+            </Button>
+          </Link>
+          {(!!sortBy || !!sortOrder || !!searchTerm) && (
+            <Button
+              onClick={resetFilters}
+              style={{ margin: "0px 10px" }}
+              type="primary"
+            >
+              <ReloadOutlined />
+            </Button>
+          )}
+        </div>
       </ActionBar>
 
       <ReusableTable
