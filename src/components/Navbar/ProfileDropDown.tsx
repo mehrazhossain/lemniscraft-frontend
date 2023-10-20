@@ -14,7 +14,7 @@ const ProfileDropDown = (props: any) => {
 
   const navigation = [
     { title: "Dashboard", path: "/dashboard" },
-    { title: "My Account", path: "/dashboard" },
+    { title: "My Account", path: "/profile" },
     { title: "Logout", path: "/dashboard" },
   ];
 

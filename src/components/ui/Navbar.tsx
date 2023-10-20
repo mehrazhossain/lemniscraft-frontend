@@ -9,10 +9,10 @@ const Navbar = () => {
   const [menuState, setMenuState] = useState(false);
 
   const navigation = [
-    { title: "Customers", path: "/customers" },
-    { title: "Careers", path: "/careers" },
-    { title: "Guides", path: "/guides" },
-    { title: "Partners", path: "/partners" },
+    { title: "Home", path: "/" },
+    { title: "Customers", path: "javascript:void(0)" },
+    { title: "Partners", path: "javascript:void(0)" },
+    { title: "Feedback", path: "javascript:void(0)" },
   ];
 
   return (
