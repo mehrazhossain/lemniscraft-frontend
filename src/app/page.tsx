@@ -1,10 +1,15 @@
+import Feature from "@/components/Feature/Feature";
+import Footer from "@/components/Footer/Footer";
+import HeroSection from "@/components/Hero/HeroSection";
 import Service from "@/components/Service/Service";
-import Navbar from "@/components/ui/Navbar";
 
 const HomePage = () => {
   return (
     <div>
+      <HeroSection />
       <Service />
+      <Feature />
+      <Footer />
     </div>
   );
 };

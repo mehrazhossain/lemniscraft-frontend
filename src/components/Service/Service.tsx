@@ -1,38 +1,57 @@
-import { Col, Row } from "antd";
+"user client";
 
 const Service = () => {
+  const query: Record<string, any> = {};
+
   const posts = [
     {
-      title: "What is SaaS? Software as a Service Explained",
+      title: "Social Media Boosting",
       desc: "Going into this journey, I had a standard therapy regimen, based on looking at the research literature. After I saw the movie, I started to ask other people what they did for their anxiety, and some",
-      img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      img: "https://static.vecteezy.com/system/resources/previews/009/320/929/original/boost-posts-social-media-with-rocket-and-smartphone-vector.jpg",
       authorLogo: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
       authorName: "Sidi dev",
       date: "Jan 4 2022",
       href: "javascript:void(0)",
     },
     {
-      title: "A Quick Guide to WordPress Hosting",
+      title: "Search Engine Optimization (SEO)",
       desc: "According to him, â€œI'm still surprised that this has happened. But we are surprised because we are so surprised.â€More revelations about Whittington will be featured in the film",
-      img: "https://images.unsplash.com/photo-1620287341056-49a2f1ab2fdc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      img: "https://uploads-ssl.webflow.com/631492df65cd5321245d33e8/6319aee0c88759a5fcc14c00_xRxvPsDqkEmZCSyI.jpeg",
       authorLogo: "https://api.uifaces.co/our-content/donated/FJkauyEa.jpg",
       authorName: "Micheal",
       date: "Jan 4 2022",
       href: "javascript:void(0)",
     },
     {
-      title: "7 Promising VS Code Extensions Introduced in 2022",
+      title: "Social Media Management",
       desc: "I hope I remembered all the stuff that they needed to know. They're like, 'okay,' and write it in their little reading notebooks. I realized today that I have all this stuff that",
-      img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      authorLogo: "https://randomuser.me/api/portraits/men/46.jpg",
+      img: "https://www.searchenginejournal.com/wp-content/uploads/2021/08/top-5-reasons-why-you-need-a-social-media-manager-616015983b3ba-sej-1280x720.png",
       authorName: "Luis",
       date: "Jan 4 2022",
       href: "javascript:void(0)",
     },
     {
-      title: "How to Use Root C++ Interpreter Shell to Write C++ Programs",
+      title: "E-commerce Website Development",
       desc: "The powerful gravity waves resulting from the impact of the planets' moons â€” four in total â€” were finally resolved in 2015 when gravitational microlensing was used to observe the",
-      img: "https://images.unsplash.com/photo-1617529497471-9218633199c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      img: "https://qckbot.com/wp-content/uploads/2022/05/E-Commerce-min-768x715.png",
+      authorLogo: "https://api.uifaces.co/our-content/donated/KtCFjlD4.jpg",
+      authorName: "Lourin",
+      date: "Jan 4 2022",
+      href: "javascript:void(0)",
+    },
+    {
+      title: "Web Design and Development",
+      desc: "The powerful gravity waves resulting from the impact of the planets' moons â€” four in total â€” were finally resolved in 2015 when gravitational microlensing was used to observe the",
+      img: "https://www.allianzeinfosoft.com/images/frontend/webp/web-dev/web_design_development_img.webp",
+      authorLogo: "https://api.uifaces.co/our-content/donated/KtCFjlD4.jpg",
+      authorName: "Lourin",
+      date: "Jan 4 2022",
+      href: "javascript:void(0)",
+    },
+    {
+      title: "Data Analytics and Reporting",
+      desc: "The powerful gravity waves resulting from the impact of the planets' moons â€” four in total â€” were finally resolved in 2015 when gravitational microlensing was used to observe the",
+      img: "https://www.exposure.com/Customer-Content/www/CMS/files/blog/4-Google-Analytics-Reports-to-know.jpg",
       authorLogo: "https://api.uifaces.co/our-content/donated/KtCFjlD4.jpg",
       authorName: "Lourin",
       date: "Jan 4 2022",
@@ -41,52 +60,41 @@ const Service = () => {
   ];
 
   return (
-    <section className="mt-12 mx-auto px-4 max-w-screen-xl md:px-8">
-      <div className="text-center">
-        <h1 className="text-3xl text-gray-800 font-semibold">Blog</h1>
-        <p className="mt-3 text-gray-500">
-          Blogs that are loved by the community. Updated every hour.
-        </p>
-      </div>
-      <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((items, key) => (
-          <article
-            className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
-            key={key}
-          >
-            <a href={items.href}>
-              <img
-                src={items.img}
-                loading="lazy"
-                alt={items.title}
-                className="w-full h-48 rounded-t-md"
-              />
-              <div className="flex items-center mt-2 pt-3 ml-4 mr-2">
-                <div className="flex-none w-10 h-10 rounded-full">
-                  <img
-                    src={items.authorLogo}
-                    className="w-full h-full rounded-full"
-                    alt={items.authorName}
-                  />
+    <>
+      <section className="mt-12 mb-20 mx-auto px-4 max-w-screen-xl md:px-8">
+        <div className="text-center">
+          <h1 className="text-3xl text-gray-800 font-semibold">
+            Our Offerings
+          </h1>
+          <p className="mt-3 text-gray-500">
+            Explore our services, discover expert insights, and embark on a
+            journey to digital excellence.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((items, key) => (
+            <article
+              className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
+              key={key}
+            >
+              <a href={items.href}>
+                <img
+                  src={items.img}
+                  loading="lazy"
+                  alt={items.title}
+                  className="w-full h-48 rounded-t-md"
+                />
+                <div className="pt-3 ml-4 mr-2 mb-3">
+                  <h3 className="text-xl text-gray-900">{items.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{items.desc}</p>
                 </div>
-                <div className="ml-3">
-                  <span className="block text-gray-900">
-                    {items.authorName}
-                  </span>
-                  <span className="block text-gray-400 text-sm">
-                    {items.date}
-                  </span>
-                </div>
-              </div>
-              <div className="pt-3 ml-4 mr-2 mb-3">
-                <h3 className="text-xl text-gray-900">{items.title}</h3>
-                <p className="text-gray-400 text-sm mt-1">{items.desc}</p>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+      <div className="border-t border-gray-300 my-4"></div>
+    </>
   );
 };
 

@@ -4,7 +4,8 @@ import { UserOutlined, TableOutlined } from "@ant-design/icons";
 import { USER_ROLE } from "./role";
 import { useRouter } from "next/navigation";
 
-export const sidebarItems = (role: string) => {
+// eslint-disable-next-line react-hooks/rules-of-hooks
+export const SidebarItems = (role: string) => {
   const router = useRouter();
 
   const defaultSidebarItems: MenuProps["items"] = [

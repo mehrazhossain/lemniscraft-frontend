@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
 import { Layout, Menu } from "antd";
-import { sidebarItems } from "@/constants/sidebarItems";
-import { USER_ROLE } from "@/constants/role";
-import Image from "next/image";
 import { getUserInfo } from "@/services/auth.service";
+import { SidebarItems } from "@/constants/sidebarItems";
 
 const Sidebar = () => {
   const { Sider } = Layout;
@@ -33,7 +31,7 @@ const Sidebar = () => {
         theme="light"
         defaultSelectedKeys={["1"]}
         mode="inline"
-        items={sidebarItems(role)}
+        items={SidebarItems(role)}
       />
     </Sider>
   );
