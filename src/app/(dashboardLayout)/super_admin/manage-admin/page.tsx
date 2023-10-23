@@ -8,6 +8,7 @@ import { useState } from "react";
 import { DeleteFilled, EditFilled, ReloadOutlined } from "@ant-design/icons";
 import { useDebounced } from "@/redux/hooks";
 import dayjs from "dayjs";
+import ReusableModal from "@/components/ui/ReusableModal";
 
 const ManageAdminPage = () => {
   const query: Record<string, any> = {};
@@ -17,6 +18,8 @@ const ManageAdminPage = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [adminId, setAdminId] = useState<string>("")
 
   query["limit"] = size;
   query["page"] = page;
@@ -72,7 +75,10 @@ const ManageAdminPage = () => {
               </Button>
             </Link>
             <Button
-              onClick={() => deleteHandler(data?.id)}
+              onClick={() => {
+                setOpen(true);
+                setAdminId(data?.id)
+              }}
               type="primary"
               danger
             >
@@ -90,10 +96,11 @@ const ManageAdminPage = () => {
     setSize(pageSize);
   };
 
-  const deleteHandler = async (id: string) => {
-    message.loading("Deleting...");
+  const deleteAdminHandler = async (id: string) => {
     try {
       await deleteUser(id);
+      setOpen(false)
+      message.loading("Deleting...");
       message.success("User Deleted Successfully!");
     } catch (err: any) {
       console.error(err.message);
@@ -155,6 +162,14 @@ const ManageAdminPage = () => {
         onTableChange={onTableChange}
         showPagination={true}
       />
+      <ReusableModal
+      title="Remove admin"
+      isOpen={open}
+      closeModal={()=>setOpen(false)}
+      handleOk={()=>deleteAdminHandler(adminId)}
+      >
+        <p className="my-5">Do you want to remove this admin?</p>
+      </ReusableModal>
     </div>
   );
 };
