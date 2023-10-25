@@ -11,6 +11,7 @@ import {
   useDeleteServiceMutation,
   useServicesQuery,
 } from "@/redux/api/serviceApi";
+import ReusableModal from "@/components/ui/ReusableModal";
 
 const ManageServicePage = () => {
   const query: Record<string, any> = {};
@@ -20,6 +21,8 @@ const ManageServicePage = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [serviceId, setServiceId] = useState<string>("");
 
   query["limit"] = size;
   query["page"] = page;
@@ -78,7 +81,10 @@ const ManageServicePage = () => {
               </Button>
             </Link>
             <Button
-              onClick={() => deleteHandler(data?.id)}
+              onClick={() => {
+                setOpen(true);
+                setServiceId(data?.id);
+              }}
               type="primary"
               danger
             >
@@ -95,11 +101,12 @@ const ManageServicePage = () => {
     setSize(pageSize);
   };
 
-  const deleteHandler = async (id: string) => {
-    message.loading("Deleting...");
+  const deleteServiceHandler = async (id: string) => {
     try {
       await deleteService(id);
-      message.success("User Deleted Successfully!");
+      setOpen(false);
+      message.loading("Deleting...");
+      message.success("Service Deleted Successfully!");
     } catch (err: any) {
       console.error(err.message);
     }
@@ -160,6 +167,14 @@ const ManageServicePage = () => {
         onTableChange={onTableChange}
         showPagination={true}
       />
+      <ReusableModal
+        title="Remove Service"
+        isOpen={open}
+        closeModal={() => setOpen(false)}
+        handleOk={() => deleteServiceHandler(serviceId)}
+      >
+        <p className="my-5">Do you want to remove this service?</p>
+      </ReusableModal>
     </div>
   );
 };
