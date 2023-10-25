@@ -8,6 +8,7 @@ import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.service";
+import Link from "next/link";
 
 type FormValues = {
   email: string;
@@ -48,6 +49,12 @@ const LoginPage = () => {
         <h1 style={{ margin: "15px 0px" }} className="text-3xl">
           Login Your Account
         </h1>
+        <p style={{ margin: "15px 0px" }} className="text-xl">
+          <span className="text-gray-800">Don't have an account yet?</span>{" "}
+          <Link href="/signup" className="text-[#92E3A9]">
+            Sign Up
+          </Link>
+        </p>
         <div>
           <Form submitHandler={onSubmit}>
             <div>
@@ -66,7 +73,11 @@ const LoginPage = () => {
                 label="Password"
               />
             </div>
-            <Button type="primary" htmlType="submit" style={{ color: "black" }}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ color: "black", background: "#92E3A9" }}
+            >
               LOGIN
             </Button>
           </Form>

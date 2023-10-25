@@ -11,6 +11,7 @@ import { storeUserInfo } from "@/services/auth.service";
 import { message } from "antd";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from "@/schemas/user";
+import Link from "next/link";
 
 type FormValues = {
   firstName: string;
@@ -58,6 +59,12 @@ const SignupPage = () => {
         <h1 style={{ margin: "15px 0px" }} className="text-3xl">
           Create a New Account
         </h1>
+        <p style={{ margin: "15px 0px" }} className="text-xl">
+          <span className="text-gray-800">Already have an account?</span>{" "}
+          <Link href="/login" className="text-[#92E3A9]">
+            Login
+          </Link>
+        </p>
         <div>
           <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
             <div>
@@ -116,7 +123,11 @@ const SignupPage = () => {
                 label="Profile URL"
               />
             </div>
-            <Button type="primary" htmlType="submit" style={{ color: "black" }}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ color: "black", background: "#92E3A9" }}
+            >
               SIGN UP
             </Button>
           </Form>

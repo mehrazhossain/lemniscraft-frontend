@@ -73,9 +73,8 @@ const ManageServicePage = () => {
           <>
             <Link href={`/super_admin/service/edit/${data?.id}`}>
               <Button
-                style={{ margin: "0px 5px" }}
+                style={{ margin: "0px 5px", background: "#92E3A9" }}
                 onClick={() => console.log()}
-                type="primary"
               >
                 <EditFilled />
               </Button>
