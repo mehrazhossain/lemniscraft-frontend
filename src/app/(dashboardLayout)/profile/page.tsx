@@ -6,7 +6,6 @@ import { useProfileQuery } from "@/redux/api/profileApi";
 import { useUpdateUserMutation } from "@/redux/api/userApi";
 import { UpdateUserSchema } from "@/schemas/admin";
 import { getUserInfo } from "@/services/auth.service";
-import { IUser } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row, message } from "antd";
 
@@ -73,6 +72,7 @@ const ProfilePage = () => {
                 name="firstName"
                 size="large"
                 label="First Name"
+                required
               />
             </Col>
             <Col
@@ -87,6 +87,7 @@ const ProfilePage = () => {
                 name="lastName"
                 size="large"
                 label="Last Name"
+                required
               />
             </Col>
             <Col
@@ -96,7 +97,13 @@ const ProfilePage = () => {
                 marginBottom: "10px",
               }}
             >
-              <FormInput type="text" name="email" size="large" label="Email" />
+              <FormInput
+                type="text"
+                name="email"
+                size="large"
+                label="Email"
+                required
+              />
             </Col>
 
             <Col
@@ -153,6 +160,7 @@ const ProfilePage = () => {
                 name="contactNo"
                 size="large"
                 label="Contact Number"
+                required
               />
             </Col>
             <Col
@@ -167,6 +175,7 @@ const ProfilePage = () => {
                 name="address"
                 size="large"
                 label="Address"
+                required
               />
             </Col>
             <Col
@@ -178,7 +187,11 @@ const ProfilePage = () => {
             ></Col>
           </Row>
         </div>
-        <Button style={{ color: "#000" }} htmlType="submit" type="primary">
+        <Button
+          style={{ color: "#000", background: "#92E3A9" }}
+          htmlType="submit"
+          type="primary"
+        >
           Update
         </Button>
       </Form>

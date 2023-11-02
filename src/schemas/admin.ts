@@ -49,6 +49,5 @@ export const UpdateUserSchema = yup.object().shape({
   profileImg: yup
     .string()
     .url("Invalid URL")
-    .required("Link is required")
     .optional(),
 });

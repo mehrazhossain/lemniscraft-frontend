@@ -10,5 +10,5 @@ export const userSchema = yup.object().shape({
     .matches(/^[0-9]{11}$/, "Provide valid number")
     .required("Phone number is required"),
   address: yup.string().min(3).max(50).required("Address is required"),
-  profileImg: yup.string().url("Invalid URL").required("Link is required"),
+  profileImg: yup.string().url("Invalid URL").optional(),
 });

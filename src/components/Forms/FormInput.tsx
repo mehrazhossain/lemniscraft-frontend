@@ -37,6 +37,16 @@ const FormInput = ({
   return (
     <>
       {label ? label : null}
+      {required ? (
+        <sup
+          style={{
+            color: "red",
+          }}
+        >
+          {" "}
+          &#42;
+        </sup>
+      ) : null}
       <Controller
         control={control}
         name={name}

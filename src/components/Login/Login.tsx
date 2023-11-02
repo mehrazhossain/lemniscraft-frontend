@@ -50,7 +50,9 @@ const LoginPage = () => {
           Login Your Account
         </h1>
         <p style={{ margin: "15px 0px" }} className="text-xl">
-          <span className="text-gray-800">Don't have an account yet?</span>{" "}
+          <span className="text-gray-800">
+            Don&apos;t have an account yet?{" "}
+          </span>
           <Link href="/signup" className="text-[#92E3A9]">
             Sign Up
           </Link>

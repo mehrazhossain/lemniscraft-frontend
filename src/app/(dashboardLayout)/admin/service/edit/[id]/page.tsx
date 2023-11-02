@@ -79,6 +79,7 @@ const ServiceEditPage = ({ params }: IDProps) => {
                 name="title"
                 size="large"
                 label="Service Title"
+                required
               />
             </Col>
             <Col
@@ -93,6 +94,7 @@ const ServiceEditPage = ({ params }: IDProps) => {
                 name="description"
                 size="large"
                 label="Service Description"
+                required
               />
             </Col>
             <Col
@@ -107,6 +109,7 @@ const ServiceEditPage = ({ params }: IDProps) => {
                 name="image"
                 size="large"
                 label="Service Banner URL"
+                required
               />
             </Col>
             <Col
@@ -121,6 +124,7 @@ const ServiceEditPage = ({ params }: IDProps) => {
                 name="price"
                 size="large"
                 label="Service Price"
+                required
               />
             </Col>
             <Col

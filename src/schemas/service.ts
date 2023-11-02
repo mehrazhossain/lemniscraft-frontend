@@ -7,7 +7,7 @@ export const createServiceSchema = yup.object().shape({
     .min(10)
     .max(400)
     .required("Description is required"),
-  image: yup.string().url("Invalid URL").required("Link is required"),
+  image: yup.string().url("Invalid URL").optional(),
   price: yup
     .number()
     .min(0, "Price must be greater than or equal to 0")
@@ -26,7 +26,7 @@ export const updateServiceSchema = yup.object().shape({
   image: yup
     .string()
     .url("Invalid URL")
-    .required("Link is required")
+    .optional()
     .optional(),
   price: yup
     .number()

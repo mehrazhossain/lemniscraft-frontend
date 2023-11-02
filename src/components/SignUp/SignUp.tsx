@@ -73,6 +73,7 @@ const SignupPage = () => {
                 type="text"
                 size="large"
                 label="First Name"
+                required
               />
             </div>
             <div style={{ margin: "15px 0px" }}>
@@ -81,6 +82,7 @@ const SignupPage = () => {
                 type="text"
                 size="large"
                 label="Last Name"
+                required
               />
             </div>
             <div>
@@ -89,6 +91,7 @@ const SignupPage = () => {
                 type="text"
                 size="large"
                 label="Email Address"
+                required
               />
             </div>
             <div style={{ margin: "15px 0px" }}>
@@ -97,6 +100,7 @@ const SignupPage = () => {
                 type="password"
                 size="large"
                 label="Password"
+                required
               />
             </div>
             <div style={{ margin: "15px 0px" }}>
@@ -105,6 +109,7 @@ const SignupPage = () => {
                 type="text"
                 size="large"
                 label="Contact Number"
+                required
               />
             </div>
             <div style={{ margin: "15px 0px" }}>
@@ -113,6 +118,7 @@ const SignupPage = () => {
                 type="text"
                 size="large"
                 label="Address"
+                required
               />
             </div>
             <div style={{ margin: "15px 0px" }}>
